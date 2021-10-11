@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "Color",
+  "info": {
+    "name": "color",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "hex": {
+      "type": "string"
+    },
+    "isMainColor": {
+      "type": "boolean",
+      "default": false
+    },
+    "isBackgroundColor": {
+      "type": "boolean",
+      "default": false
+    },
+    "color_category": {
+      "model": "color-category",
+      "via": "colors"
+    },
+    "displayOrder": {
+      "type": "integer",
+      "default": 0
+    }
+  }
+}

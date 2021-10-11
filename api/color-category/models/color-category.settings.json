@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "color_categories",
+  "info": {
+    "name": "Color Category",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "displayOrder": {
+      "type": "integer",
+      "default": 0
+    },
+    "colors": {
+      "via": "color_category",
+      "collection": "color"
+    }
+  }
+}

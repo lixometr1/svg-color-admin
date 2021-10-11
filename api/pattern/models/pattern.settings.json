@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "patterns",
+  "info": {
+    "name": "Pattern",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "displayOrder": {
+      "type": "integer",
+      "default": 0
+    },
+    "url": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": true,
+      "pluginOptions": {}
+    },
+    "pattern_categories": {
+      "collection": "pattern-category",
+      "via": "patterns",
+      "dominant": true
+    }
+  }
+}

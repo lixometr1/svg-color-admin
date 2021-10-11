@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pattern_categories",
+  "info": {
+    "name": "Pattern Category"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "displayOrder": {
+      "type": "integer",
+      "default": 0
+    },
+    "patterns": {
+      "via": "pattern_categories",
+      "collection": "pattern"
+    }
+  }
+}

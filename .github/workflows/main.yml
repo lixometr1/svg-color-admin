@@ -16,7 +16,7 @@ env:
   DEPLOY_PATH: /var/www/api.svg.lixometr.com
   # В теории можно собрать не только Vue-приложение, так как принцип сборки мало где отличается
   BUILD_SCRIPT: npm run build
-  BUILD_SCRIPT_OUTPUT: dist
+  BUILD_SCRIPT_OUTPUT: .
   BRANCH_NAME: production
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -31,12 +31,12 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '14'
-      # Устанавливаем зависимости для сборки
-      - name: Install Dependencies
-        run: npm i
-      # Собираем приложение
-      - name: Build Appliction
-        run: $BUILD_SCRIPT
+      # # Устанавливаем зависимости для сборки
+      # - name: Install Dependencies
+      #   run: npm i
+      # # Собираем приложение
+      # - name: Build Appliction
+      #   run: $BUILD_SCRIPT
       # Доставляем собранное приложение на сервер
       - name: Deploy to Server
         uses: appleboy/scp-action@master
@@ -50,11 +50,11 @@ jobs:
           strip_components: 1
       - name: Print Info
         run: echo "Deployed at https://${BRANCH_NAME}.lixometr.com/"
-      - name: executing remote ssh commands using password
+      - name: Restarting process
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          port: ${{ secrets.PORT }}
-          script: whoami
+          host: ${{ secrets.DEPLOY_SERVER_HOST }}
+          username: ${{ secrets.DEPLOY_SERVER_USERNAME }}
+          key: ${{ secrets.DEPLOY_SECRET_KEY }}
+          port: ${{ secrets.DEPLOY_SERVER_PORT }}
+          script: echo hi;

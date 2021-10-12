@@ -7,11 +7,11 @@
 const { sanitizeEntity } = require("strapi-utils");
 module.exports = {
   async getByCategory(ctx) {
-    const categoryId = ctx.params.id;
+    const categoryId = ctx.params.id.split(',');
     const perPage = ctx.query.perPage ? parseInt(ctx.query.perPage) : 15;
     const page = ctx.query.page || 1;
     const query = {
-      "pattern_categories.id": parseInt(categoryId),
+      "pattern_categories.id": categoryId,
     };
     const entities = await strapi.services.pattern.find(
       {

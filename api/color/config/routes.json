@@ -8,6 +8,23 @@
         "policies": []
       }
     },
+    
+    {
+      "method": "GET",
+      "path": "/colors/main",
+      "handler": "color.getMainColors",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/colors/background",
+      "handler": "color.getBackgroundColors",
+      "config": {
+        "policies": []
+      }
+    },
     {
       "method": "GET",
       "path": "/colors/count",

@@ -25,7 +25,7 @@ module.exports = {
     );
     const total = await strapi.services.pattern.count(query);
     const totalPages = Math.ceil(total / perPage);
-    return {
+    return { 
       items: entities.map((entity) =>
         sanitizeEntity(entity, { model: strapi.models.pattern })
       ),

@@ -11,7 +11,7 @@ module.exports = {
     const perPage = ctx.query.perPage ? parseInt(ctx.query.perPage) : 15;
     const page = ctx.query.page || 1;
     const query = {
-      "pattern_categories.id": categoryId,
+      "pattern_categories.id": categoryId ,
     };
     const entities = await strapi.services.pattern.find(
       {

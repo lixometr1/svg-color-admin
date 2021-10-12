@@ -58,5 +58,6 @@ jobs:
           port: ${{ secrets.DEPLOY_SERVER_PORT }}
           script: |
             cd /var/www/admin.svg.lixometr.com/production
+            node -v
             pm2 restart ecosystem.config.js
 

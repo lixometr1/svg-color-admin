@@ -1,3 +1,5 @@
+const { sanitizeEntity } = require("strapi-utils");
+
 module.exports = {
   async paginate(model, ctx, query, populate) {
     const perPage = ctx.query.perPage ? parseInt(ctx.query.perPage) : 15;

@@ -22,20 +22,13 @@
       "type": "integer",
       "default": 0
     },
-    "url": {
-      "model": "file",
-      "via": "related",
-      "allowedTypes": [
-        "images"
-      ],
-      "plugin": "upload",
-      "required": true,
-      "pluginOptions": {}
-    },
     "pattern_categories": {
       "collection": "pattern-category",
       "via": "patterns",
       "dominant": true
+    },
+    "url": {
+      "type": "string"
     }
   }
 }

@@ -18,6 +18,14 @@
     },
     {
       "method": "GET",
+      "path": "/patterns/paginate",
+      "handler": "pattern.paginate",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/patterns/count",
       "handler": "pattern.count",
       "config": {

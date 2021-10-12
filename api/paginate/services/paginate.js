@@ -6,7 +6,7 @@ module.exports = {
     const page = ctx.query.page || 1;
     const entities = await strapi.services[model].find(
       {
-        _sort: "displayOrder:desc",
+        _sort: "displayOrder:asc",
         _start: (page - 1) * perPage,
         _limit: perPage,
         _publicationState: "live",

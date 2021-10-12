@@ -12,12 +12,12 @@ module.exports = {
     const query = {
       "pattern_categories.id": categoryId,
     };
-    return strapi.services.paginate(strapi.services.pattern, ctx, query, [
+    return strapi.services.paginate.paginate(strapi.services.pattern, ctx, query, [
       "url",
     ]);
   },
   paginate(ctx) {
-    return strapi.services.paginate(strapi.services.pattern, ctx, {}, [
+    return strapi.services.paginate.paginate(strapi.services.pattern, ctx, {}, [
       "url",
     ]);
   },

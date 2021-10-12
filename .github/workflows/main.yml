@@ -56,7 +56,7 @@ jobs:
           username: ${{ secrets.DEPLOY_SERVER_USERNAME }}
           key: ${{ secrets.DEPLOY_SECRET_KEY }}
           port: ${{ secrets.DEPLOY_SERVER_PORT }}
-          command: |
+          script: |
             cd /var/www/admin.svg.lixometr.com/production
             node -v
             pm2 restart ecosystem.config.js

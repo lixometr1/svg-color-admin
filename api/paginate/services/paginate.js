@@ -1,5 +1,5 @@
 module.exports = {
-  paginate(model, ctx, query, populate) {
+  async paginate(model, ctx, query, populate) {
     const perPage = ctx.query.perPage ? parseInt(ctx.query.perPage) : 15;
     const page = ctx.query.page || 1;
     const entities = await model.find(

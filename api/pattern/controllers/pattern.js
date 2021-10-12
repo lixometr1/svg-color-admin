@@ -17,7 +17,7 @@ module.exports = {
     ]);
   },
   paginate(ctx) {
-    return strapi.services.paginate(strapi.services.pattern, ctx, query, [
+    return strapi.services.paginate(strapi.services.pattern, ctx, {}, [
       "url",
     ]);
   },

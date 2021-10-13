@@ -23,7 +23,7 @@ services:
     volumes:
       - ./data:/var/lib/mysql
     environment:
-      MYSQL_ROOT_PASSWORD: strapi
-      MYSQL_DATABASE: strapi
-      MYSQL_USER: strapi
-      MYSQL_PASSWORD: strapi
+      MYSQL_ROOT_PASSWORD: qYte7L(-Pa
+      MYSQL_DATABASE: svg_color
+      MYSQL_USER: root
+      MYSQL_PASSWORD: qYte7L(-Pa

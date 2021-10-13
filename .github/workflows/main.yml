@@ -63,8 +63,10 @@ jobs:
           SSH_USER: ${{ secrets.DEPLOY_SERVER_USERNAME }}
           SSH_KEY: ${{ secrets.DEPLOY_SECRET_KEY }}
           SSH_HOST: ${{ secrets.DEPLOY_SERVER_HOST }}
+      # - name: Restart the process
+      #   run: ssh production 'cd /var/www/admin.svg.lixometr.com/production && pm2 restart ecosystem.config.js'
       - name: Restart the process
-        run: ssh production 'cd /var/www/admin.svg.lixometr.com/production && pm2 restart ecosystem.config.js'
+        run: ssh production 'cd /var/www/admin.svg.lixometr.com/production && docker build .'
       # - name: Restarting process
       #   uses: appleboy/ssh-action@master
       #   with:

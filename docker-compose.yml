@@ -6,14 +6,14 @@ services:
       DATABASE_CLIENT: mysql
       DATABASE_HOST: mysql
       DATABASE_PORT: 3306
-      DATABASE_NAME: svg_color
-      DATABASE_USERNAME: root
-      DATABASE_PASSWORD: qYte7L(-Pa
+      DATABASE_NAME: strapi
+      DATABASE_USERNAME: strapi
+      DATABASE_PASSWORD: strapi
       DATABASE_SSL: 'false'
     volumes:
       - ./app:/srv/app
     ports:
-      - '8005:8005'
+      - '1337:1337'
     depends_on:
       - mysql
 
@@ -23,7 +23,7 @@ services:
     volumes:
       - ./data:/var/lib/mysql
     environment:
-      MYSQL_ROOT_PASSWORD: qYte7L(-Pa
-      MYSQL_DATABASE: svg_color
-      MYSQL_USER: root
-      MYSQL_PASSWORD: qYte7L(-Pa
+      MYSQL_ROOT_PASSWORD: strapi
+      MYSQL_DATABASE: strapi
+      MYSQL_USER: strapi
+      MYSQL_PASSWORD: strapi

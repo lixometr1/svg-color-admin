@@ -2,15 +2,6 @@ version: '3'
 services:
   strapi:
     build: .
-    environment:
-      DATABASE_CLIENT: mysql
-      DATABASE_HOST: mysql
-      DATABASE_PORT: 3306
-      DATABASE_NAME: svg_color
-      DATABASE_USERNAME: root
-      DATABASE_PASSWORD: qYte7L(-Pa
-      DATABASE_SSL: 'false'
-      PORT: 8005
     volumes:
       - .:/app
     ports:

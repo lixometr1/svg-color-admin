@@ -15,5 +15,6 @@ RUN npm install
 # копируем исходный код
 COPY . .
 
+
 EXPOSE 8005
 CMD [ "npm", "run", "start" ]

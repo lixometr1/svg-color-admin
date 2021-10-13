@@ -23,7 +23,7 @@ services:
     command: mysqld --default-authentication-plugin=mysql_native_password
     volumes:
       - /var/lib/mysql:/var/lib/mysql
-    environment:
+    # environment:
       # MYSQL_ROOT_PASSWORD: strapi
       # MYSQL_DATABASE: strapi
       # MYSQL_USER: strapi

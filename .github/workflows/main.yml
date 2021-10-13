@@ -27,9 +27,9 @@ jobs:
       # Делаем checkout текущей ветки
       - uses: actions/checkout@v2
       # Устанавливаем Node.JS для сборки приложения
-      - uses: actions/setup-node@v1
-        with:
-          node-version: '14'
+      # - uses: actions/setup-node@v1
+      #   with:
+      #     node-version: '14'
       # # Устанавливаем зависимости для сборки
       # - name: Install Dependencies
       #   run: npm i
@@ -47,17 +47,33 @@ jobs:
           source: ${{ env.BUILD_SCRIPT_OUTPUT }}
           target: ${{ env.DEPLOY_PATH }}/${{ env.BRANCH_NAME }}
           strip_components: 1
-      - name: Print Info
-        run: echo "Deployed at https://${BRANCH_NAME}.lixometr.com/"
-      - name: Restarting process
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.DEPLOY_SERVER_HOST }}
-          username: ${{ secrets.DEPLOY_SERVER_USERNAME }}
-          key: ${{ secrets.DEPLOY_SECRET_KEY }}
-          port: ${{ secrets.DEPLOY_SERVER_PORT }}
-          script: |
-            cd /var/www/admin.svg.lixometr.com/production
-            node -v
-            pm2 restart ecosystem.config.js
+      - name: Configure SSH
+        run: |
+          mkdir -p ~/.ssh/
+          echo "$SSH_KEY" > ~/.ssh/production.key
+          chmod 600 ~/.ssh/production.key
+          cat >>~/.ssh/config <<END
+          Host production
+            HostName $SSH_HOST
+            User $SSH_USER
+            IdentityFile ~/.ssh/production.key
+            StrictHostKeyChecking no
+          END
+        env:
+          SSH_USER: ${{ secrets.DEPLOY_SERVER_USERNAME }}
+          SSH_KEY: ${{ secrets.DEPLOY_SECRET_KEY }}
+          SSH_HOST: ${{ secrets.DEPLOY_SERVER_HOST }}
+      - name: Restart the process
+        run: ssh production 'cd /var/www/admin.svg.lixometr.com/production && pm2 restart ecosystem.config.js'
+      # - name: Restarting process
+      #   uses: appleboy/ssh-action@master
+      #   with:
+      #     host: ${{ secrets.DEPLOY_SERVER_HOST }}
+      #     username: ${{ secrets.DEPLOY_SERVER_USERNAME }}
+      #     key: ${{ secrets.DEPLOY_SECRET_KEY }}
+      #     port: ${{ secrets.DEPLOY_SERVER_PORT }}
+      #     script: |
+      #       cd /var/www/admin.svg.lixometr.com/production
+      #       node -v
+      #       pm2 restart ecosystem.config.js
 

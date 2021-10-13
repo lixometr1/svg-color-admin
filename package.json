@@ -11,6 +11,8 @@
   },
   "devDependencies": {},
   "dependencies": {
+    "csv-parser": "^3.0.0",
+    "d3-dsv": "^3.0.1",
     "knex": "0.21.18",
     "mysql": "^2.18.1",
     "sqlite3": "5.0.0",

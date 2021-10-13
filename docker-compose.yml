@@ -1,9 +1,9 @@
 version: '3'
 services:
   strapi:
-    build: .
+    image: strapi/strapi
     volumes:
-      - .:/app
+      - .:/srv/app
     ports:
       - '8005:8005'
     depends_on:

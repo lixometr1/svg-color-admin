@@ -24,7 +24,6 @@ module.exports = {
   upload: async (ctx) => {
     const files = ctx.request.files;
     const { pattern, color, colorCategory, patternCategory } = files;
-    console.log(pattern. color, colorCategory, patternCategory);
     if (colorCategory) {
       await strapi.plugins.import.services.import.importColorCategory(
         colorCategory.path

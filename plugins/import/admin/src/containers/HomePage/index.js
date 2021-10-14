@@ -60,7 +60,7 @@ const HomePage = () => {
   };
   return (
     <div>
-      <Container className="container">
+      <Container className="container-fluid">
         <Title>Import</Title>
         <div>
           <div className="row">

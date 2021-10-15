@@ -36,6 +36,9 @@
     "displayOrder": {
       "type": "integer",
       "default": 0
+    },
+    "color_code": {
+      "type": "string"
     }
   }
 }

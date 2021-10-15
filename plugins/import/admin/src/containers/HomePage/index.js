@@ -25,6 +25,22 @@ const InputBlock = styled.div`
   box-shadow: 0 2px 4px #e3e9f3;
   padding: 15px;
 `;
+const showErrorMessage = (message) => {
+  strapi.notification.toggle({
+    title: "Error",
+    type: "warning",
+    message: message,
+    timeout: 10000,
+  });
+};
+const showSuccessMessage = () => {
+  strapi.notification.toggle({
+    title: "Success",
+    type: "success",
+    message: "Successfully imported!",
+    timeout: 5000,
+  });
+};
 const HomePage = () => {
   const [isLoading, setLoading] = useState();
   const [patternFile, setPatternFile] = useState();
@@ -47,17 +63,20 @@ const HomePage = () => {
         method: "POST",
         data: formData,
       });
-      console.log(data);
+      showSuccessMessage();
     } catch (err) {
-      console.log("seding er", err);
+      console.log("seding error", err);
+      showErrorMessage(err.response?.data?.message);
     }
   };
   const upload = async () => {
+    if (isLoading) return;
     console.log("uploading", patternFile, colorFile);
     setLoading(true);
     await sendFiles();
     setLoading(false);
   };
+ 
   return (
     <div>
       <Container className="container-fluid">
@@ -66,12 +85,18 @@ const HomePage = () => {
           <div className="row">
             <div className="col-6">
               <InputBlock>
-                <UploadInput onInput={setPatternFile} title="Pattern" />
+                <UploadInput
+                  onInput={setPatternFile}
+                  title="Pattern"
+                />
               </InputBlock>
             </div>
             <div className="col-6">
               <InputBlock>
-                <UploadInput onInput={setColorFile} title="Color" />
+                <UploadInput
+                  onInput={setColorFile}
+                  title="Color"
+                />
               </InputBlock>
             </div>
           </div>

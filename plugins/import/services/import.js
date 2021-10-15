@@ -5,15 +5,14 @@
  *
  * @description: A set of functions similar to controller's actions to avoid code duplication.
  */
-const fs = require("fs");
-module.exports = {
-  async importPatterns(path) {
-    const fileData = fs.readFileSync(path);
-    const fileString = fileData.toString();
 
-    console.log("read", fileData);
-  },
-  importColorCategory(path) {},
-  importPatternCategory(path) {},
-  importColors(path) {},
+const importPatterns = require("./import/import-patterns");
+const importColorCategory = require("./import/import-color-category");
+const importPatternCategory = require("./import/import-pattern-category");
+const importColors = require("./import/import-colors");
+module.exports = {
+  importPatterns,
+  importColorCategory,
+  importPatternCategory,
+  importColors,
 };

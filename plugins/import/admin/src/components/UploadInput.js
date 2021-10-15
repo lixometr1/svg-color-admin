@@ -1,4 +1,4 @@
-import React, { useState, memo } from "react";
+import React, { createRef, useState, memo } from "react";
 import { Text } from "@buffetjs/core";
 import styled from "styled-components";
 import { Success, Plus } from "@buffetjs/icons";
@@ -38,8 +38,10 @@ const FileInput = styled.input`
 let id = 1;
 const UploadInput = (props) => {
   id++;
-  const { onInput, title } = props;
+  const { onInput, title, reset } = props;
   const [file, setFile] = useState(false);
+  const inpRef = createRef();
+
   return (
     <div>
       <UploadTitlte>{title}</UploadTitlte>
@@ -55,6 +57,7 @@ const UploadInput = (props) => {
         <UploadFileName>{file?.name}</UploadFileName>
       </UploadArea>
       <FileInput
+        ref={inpRef}
         type="file"
         id={"input-" + id}
         onChange={(e) => {

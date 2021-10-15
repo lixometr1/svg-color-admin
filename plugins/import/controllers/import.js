@@ -22,24 +22,37 @@ module.exports = {
     });
   },
   upload: async (ctx) => {
-    const files = ctx.request.files;
-    const { pattern, color, colorCategory, patternCategory } = files;
-    if (colorCategory) {
-      await strapi.plugins.import.services.import.importColorCategory(
-        colorCategory.path
-      );
+    try {
+      const files = ctx.request.files;
+      const { pattern, color, colorCategory, patternCategory } = files;
+      if (colorCategory) {
+        await strapi.plugins.import.services.import.importColorCategory(
+          colorCategory.path
+        );
+      }
+      if (patternCategory) {
+        await strapi.plugins.import.services.import.importPatternCategory(
+          patternCategory.path
+        );
+      }
+      if (pattern) {
+        await strapi.plugins.import.services.import.importPatterns(
+          pattern.path
+        );
+      }
+      if (color) {
+        await strapi.plugins.import.services.import.importColors(color.path);
+      }
+      return { ok: true };
+    } catch (err) {
+      console.log(err)
+      ctx.status = 400;
+      return {
+        message: err.message,
+        status: 400
+      };
+      // return ctx.status(400).send(err.message)
+      // return err.message;
     }
-    if (patternCategory) {
-      await strapi.plugins.import.services.import.importPatternCategory(
-        patternCategory.path
-      );
-    }
-    if (pattern) {
-      await strapi.plugins.import.services.import.importPatterns(pattern.path);
-    }
-    if (color) {
-      await strapi.plugins.import.services.import.importColors(color.path);
-    }
-    return { ok: true };
   },
 };

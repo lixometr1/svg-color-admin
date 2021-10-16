@@ -75,7 +75,6 @@ jobs:
           script: |
             cd /var/www/admin.svg.lixometr.com/production
             npm i
-            npm run build
             docker-compose restart
            
 

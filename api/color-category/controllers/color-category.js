@@ -8,9 +8,14 @@ const { sanitizeEntity } = require("strapi-utils");
 
 module.exports = {
   async all() {
-    const entities = await strapi.services["color-category"].find({}, []);
+    const entities = await strapi.services["color-category"].find(
+      {
+        _sort: "displayOrder:asc",
+      },
+      []
+    );
     return entities.map((entity) =>
-      sanitizeEntity(entity, { model: strapi.models['pattern-category'] })
+      sanitizeEntity(entity, { model: strapi.models["pattern-category"] })
     );
   },
 };

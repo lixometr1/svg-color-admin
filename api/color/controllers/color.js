@@ -12,6 +12,7 @@ module.exports = {
       {
         isMainColor: true,
         color_category: categories,
+        _sort: "displayOrder:asc",
       },
       ["color_category"]
     );
@@ -25,6 +26,7 @@ module.exports = {
       {
         isBackgroundColor: true,
         color_category: categories,
+        _sort: "displayOrder:asc",
       },
       ["color_category"]
     );

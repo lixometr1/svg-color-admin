@@ -10,7 +10,7 @@
     },
     {
       "method": "GET",
-      "path": "/patterns/category/:id",
+      "path": "/patterns/by-category/",
       "handler": "pattern.getByCategory",
       "config": {
         "policies": []

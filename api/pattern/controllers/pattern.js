@@ -6,11 +6,11 @@
  */
 module.exports = {
   async getByCategory(ctx) {
-    const categoryId = ctx.params.id.split(",");
+    const categories = ctx.query.categories
     let query = {}
-    if (categoryId && categoryId.length) {
+    if (categories && categories.length) {
       query = {
-        "pattern_categories.id": categoryId,
+        "pattern_categories.id": categories,
       };
     } else {
       query = {}

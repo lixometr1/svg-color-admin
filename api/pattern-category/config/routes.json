@@ -18,6 +18,14 @@
     },
     {
       "method": "GET",
+      "path": "/pattern-categories/all",
+      "handler": "pattern-category.all",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/pattern-categories/:id",
       "handler": "pattern-category.findOne",
       "config": {

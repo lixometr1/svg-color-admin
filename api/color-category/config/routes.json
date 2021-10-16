@@ -18,6 +18,14 @@
     },
     {
       "method": "GET",
+      "path": "/color-categories/all",
+      "handler": "color-category.all",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/color-categories/:id",
       "handler": "color-category.findOne",
       "config": {

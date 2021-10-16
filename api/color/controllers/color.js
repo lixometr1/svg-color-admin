@@ -7,19 +7,29 @@
 const { sanitizeEntity } = require("strapi-utils");
 module.exports = {
   async getMainColors(ctx) {
-    const entities = await strapi.services.color.find({
-      isMainColor: true,
-    }, ['color_category']);
-    return entities.map((entity) =>
-      sanitizeEntity(entity, { model: strapi.models.color })
+    const categories = ctx.query.categories;
+    const result = await strapi.services.paginate.paginate(
+      "color",
+      ctx,
+      {
+        isMainColor: true,
+        color_category: categories,
+      },
+      ["color_category"]
     );
+    return result;
   },
   async getBackgroundColors(ctx) {
-    const entities = await strapi.services.color.find({
-      isBackgroundColor: true,
-    }, ['color_category']);
-    return entities.map((entity) =>
-      sanitizeEntity(entity, { model: strapi.models.color })
+    const categories = ctx.query.categories;
+    const result = await strapi.services.paginate.paginate(
+      "color",
+      ctx,
+      {
+        isBackgroundColor: true,
+        color_category: categories,
+      },
+      ["color_category"]
     );
+    return result;
   },
 };

@@ -74,6 +74,8 @@ jobs:
           port: ${{ secrets.DEPLOY_SERVER_PORT }}
           script: |
             cd /var/www/admin.svg.lixometr.com/production
+            npm i
+            npm run build
             docker-compose restart
            
 
